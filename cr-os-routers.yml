@@ -1,0 +1,6 @@
+- name: Configure OPNFV demo CloudRouter OS Routers
+  hosts: cloudrouter-os-routers
+
+  roles:
+    - cloudrouter-os-routers
+

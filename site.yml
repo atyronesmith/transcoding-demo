@@ -1,18 +1,4 @@
-- name: Configure OPNFV demo CloudRouter VPN Servers
-  hosts: cloudrouter-vpn-servers
-  
-  roles:
-    - cloudrouter-server
-
-- name: Configure OPNFV demo CloudRouter VPN Clients
-  hosts: cloudrouter-vpn-clients
-  
-  roles:
-    - cloudrouter-client
-
-- name: Configure OPNFV demo CloudRouter OS Routers
-  hosts: cloudrouter-os-routers
-
-  roles:
-    - cloudrouter-routers
+- include: cr-vpn-servers.yml
+- include: cr-vpn-clients.yml
+- include: cr-os-routers.yml
 

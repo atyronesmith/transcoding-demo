@@ -1,0 +1,6 @@
+- name: Configure OPNFV demo CloudRouter VPN Clients
+  hosts: cloudrouter-vpn-clients
+  
+  roles:
+    - cloudrouter-vpn-client
+
