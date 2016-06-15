@@ -1,4 +1,4 @@
-- hosts: test-cirros
+- hosts: aaron-cirros
   remote_user: cirros
   roles: 
     - cloudrouter-test
