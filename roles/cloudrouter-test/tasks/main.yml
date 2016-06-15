@@ -1,0 +1,14 @@
+#- name: Test yum install
+#  yum: name={{ item }} state=installed
+#    with_items:
+#      - vim
+
+- name: Test file creation
+  file: path=/home/cirros/hello.md state=touch owner=cirros group=cirros mode=0775
+
+- name: Create test openvpn conf
+  template: src=client.conf.j2 dest=/home/cirros/client.conf
+
+- name: Test copy key file
+  copy: src=static.key dest=/home/cirros/static.key
+

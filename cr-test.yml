@@ -1,0 +1,5 @@
+- hosts: test-cirros
+  remote_user: cirros
+  roles: 
+    - cloudrouter-test
+

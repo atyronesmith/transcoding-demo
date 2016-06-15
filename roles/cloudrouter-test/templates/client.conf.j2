@@ -1,0 +1,5 @@
+remote {{ remote_vpn_ip }}
+dev tun
+proto tcp-client
+ifconfig 10.8.0.2 10.8.0.1
+secret static.key
