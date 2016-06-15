@@ -3,6 +3,10 @@
 #    with_items:
 #      - vim
 
+- name: Set ansible_host to floating_ip
+  set_fact:
+    ansible_host: "{{ openstack.public_v4 }}"
+
 - name: Test file creation
   file: path=/home/cirros/hello.md state=touch owner=cirros group=cirros mode=0775
 
