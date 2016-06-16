@@ -1,4 +1,4 @@
-- hosts: aaron-cirros
+- hosts: vm01
   remote_user: cirros
   roles: 
     - cloudrouter-test
