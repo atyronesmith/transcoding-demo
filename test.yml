@@ -1,0 +1,13 @@
+# Configure any VD1 CloudRouters
+- hosts: .*VDU1.*
+  remote_user: opnfv 
+  roles: 
+    - cloudrouter-test
+
+    
+# Configure vm01
+- hosts: vm01
+  remote_user: cirros 
+  roles: 
+    - vm01-test
+
