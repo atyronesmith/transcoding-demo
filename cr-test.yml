@@ -1,4 +1,4 @@
-- hosts: vm01
+- hosts: all
   remote_user: cirros
   roles: 
     - cloudrouter-test
