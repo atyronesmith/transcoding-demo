@@ -1,5 +1,0 @@
----
-- name: Install CloudRouter config files
-  hosts: cloudrouter-servers
-  
-- git: repo=ssh://git@github.com:atyronesmith/OPNFV-demo-ansible.git dest=/home/aasmith

@@ -12,11 +12,15 @@
 #- name: Display all variables/facts known for a host
 #  debug: var=hostvars[inventory_hostname] verbosity=4
 
-- name: Let everyone know we are configured
-  file: path=/home/opnfv/README.md state=touch owner=opnfv group=opnfv mode=0775
+- name: Put a README in place
+  copy: src=README dest=/home/opnfv/README
 
-- name: Create test openvpn conf
-  template: src=client.conf.j2 dest=/home/opnfv/client.conf
+- name: Copy test openvpn conf
+  copy: src=client.conf dest=/home/opnfv/openvpn/client.conf
 
 - name: Test copy key file
-  copy: src=static.key dest=/home/opnfv/static.key
+  copy: src=static.key dest=/home/opnfv/openvpn/static.key
+
+- name: Let everyone know we are done
+  file: path=/home/opnfv/CONFIGURED state=touch owner=opnfv group=opnfv mode=0775
+
