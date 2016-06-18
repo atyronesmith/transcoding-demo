@@ -1,7 +1,13 @@
-#- name: Test yum install
+- name: Test yum install
 #  yum: name={{ item }} state=installed
 #    with_items:
 #      - vim
+- name: add facts from nova
+  set_fact:
+    ansible_ssh_host: "{{ hostvars[inventory_hostname].openstack.addresses.net_mgmt[0].addr }}"
+
+- name: Display all variables/facts known for a host
+  debug: var=hostvars[inventory_hostname] verbosity=4
 
 - name: Test file creation
   file: path=/home/opnfv/hello.md state=touch owner=opnfv group=opnfv mode=0775
@@ -11,4 +17,3 @@
 
 - name: Test copy key file
   copy: src=static.key dest=/home/opnfv/static.key
-
