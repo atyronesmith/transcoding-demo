@@ -1,4 +1,4 @@
-- hosts: ~.*Cloud.*Router.*
+- hosts: all
   gather_facts: no
   remote_user: opnfv
    
