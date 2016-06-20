@@ -1,8 +1,8 @@
 # Need to use the net_mgmt network for acces from the Ansible server
 #
-- name: add facts from OpenStack discovery
-  set_fact:
-    ansible_ssh_host: "{{ hostvars[inventory_hostname].openstack.addresses.net_mgmt[0].addr }}"
+#- name: add facts from OpenStack discovery
+#  set_fact:
+#    ansible_ssh_host: "{{ hostvars[inventory_hostname].openstack.addresses.net_mgmt[0].addr }}"
 
 #- name: Display all variables/facts known for a host
 #  debug: var=hostvars[inventory_hostname] verbosity=4
