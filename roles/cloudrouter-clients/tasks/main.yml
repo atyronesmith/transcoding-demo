@@ -7,9 +7,6 @@
 #- name: Display all variables/facts known for a host
 #  debug: var=hostvars[inventory_hostname] verbosity=4
 #
-- name: Gather facts
-  setup:
-  
 - name: Install python and deps for ansible module
   raw: sudo dnf install -y python2 python2-dnf
 
@@ -17,6 +14,9 @@
   dnf: name=libselinux-python state=present
   become: yes
   become_user: root
+
+- name: Gather facts
+  setup:  
 
 - name: Put a README in place
   copy: src=README dest=/home/opnfv/README
