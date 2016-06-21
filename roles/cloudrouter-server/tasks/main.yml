@@ -30,12 +30,12 @@
   become_user: root
 
 - name: Copy test openvpn conf
-  copy: src=server.conf dest={{openvpn_dir}}/server.conf
+  copy: src=server.conf dest=/etc/openvpn/server.conf
   become: yes
   become_user: root
 
 - name: Test copy key file
-  copy: src=static.key dest={{openvpn_dir}}/static.key
+  copy: src=static.key dest=/etc/openvpn/static.key
   become: yes
   become_user: root
 
@@ -46,7 +46,7 @@
 #  template: src=CONFIGURED.j2 dest=/home/opnfv/CONFIGURED owner=opnfv group=opnfv mode="u=rw,g=r,o=r"
 
 - name: start vpn server
-  raw: sudo openvpn "{{openvpn_dir}"/server.config
+  raw: sudo openvpn /etc/openvpn/server.config
 
 - name: update forwarding table
   command: "{{item}}"
