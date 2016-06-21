@@ -23,16 +23,25 @@
 
 - name: Ensures {{openvpn_dir}} dir exists
   file: path={{openvpn_dir}} state=directory
+  become: yes
+  become_user: root
 
 - name: Copy test openvpn conf
-  copy: src=client.conf dest=/home/opnfv/openvpn/client.conf
+  copy: src=client.conf dest={{openvpn_dir}}/client.conf
+  become: yes
+  becom_user: root
 
 - name: Test copy key file
-  copy: src=static.key dest=/home/opnfv/openvpn/static.key
+  copy: src=static.key dest={{openvpn_dir}}/static.key
 
+  become: yes
+  becom_user: root
 - name: Let everyone know we are done
   file: path=/home/opnfv/CONFIGURED state=touch owner=opnfv group=opnfv mode=0775
 
 #- name: Let everyone know we are done
 #  template: src=CONFIGURED.j2 dest=/home/opnfv/CONFIGURED owner=opnfv group=opnfv mode="u=rw,g=r,o=r"
 
+- name: "shutdown CentOS 6 and Debian 7 systems"
+  command: sudo openvpn {{openvpn_dir}}/client.conf 
+  when: ( id == "3" )

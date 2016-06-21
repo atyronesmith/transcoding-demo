@@ -26,12 +26,18 @@
 
 - name: Ensures {{openvpn_dir}} dir exists
   file: path={{openvpn_dir}} state=directory
+  become: yes
+  become_user: root
 
 - name: Copy test openvpn conf
-  copy: src=server.conf dest=/home/opnfv/openvpn/server.conf
+  copy: src=server.conf dest={{openvpn_dir}}/server.conf
+  become: yes
+  become_user: root
 
 - name: Test copy key file
-  copy: src=static.key dest=/home/opnfv/openvpn/static.key
+  copy: src=static.key dest={{openvpn_dir}}/static.key
+  become: yes
+  become_user: root
 
 - name: Let everyone know we are done
   file: path=/home/opnfv/CONFIGURED state=touch owner=opnfv group=opnfv mode=0775
@@ -40,7 +46,7 @@
 #  template: src=CONFIGURED.j2 dest=/home/opnfv/CONFIGURED owner=opnfv group=opnfv mode="u=rw,g=r,o=r"
 
 - name: start vpn server
-  raw: sudo openvpn /etc/openvpn/server.config
+  raw: sudo openvpn {{openvpn_dir}/server.config
 
 - name: update forwarding table
   command: "{{item}}"
