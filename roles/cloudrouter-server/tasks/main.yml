@@ -7,6 +7,9 @@
 #- name: Display all variables/facts known for a host
 #  debug: var=hostvars[inventory_hostname] verbosity=4
 #
+- name: Install dnf
+  raw: sudo yum install -y dnf
+
 - name: Install python and deps for ansible module
   raw: sudo dnf install -y python2 python2-dnf
 
