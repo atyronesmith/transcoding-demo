@@ -21,8 +21,8 @@
 - name: Gather facts
   setup:  
 
-- name: Put a README in place
-  copy: src=README dest=/home/opnfv/README
+#- name: Put a README in place
+#  copy: src=README dest=/home/opnfv/README
 
 - name: Ensures {{openvpn_dir}} dir exists
   file: path={{openvpn_dir}} state=directory
