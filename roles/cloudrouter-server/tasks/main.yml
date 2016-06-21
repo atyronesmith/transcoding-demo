@@ -28,7 +28,7 @@
   file: path={{openvpn_dir}} state=directory
 
 - name: Copy test openvpn conf
-  copy: src=server.conf dest=/home/opnfv/openvpn/client.conf
+  copy: src=server.conf dest=/home/opnfv/openvpn/server.conf
 
 - name: Test copy key file
   copy: src=static.key dest=/home/opnfv/openvpn/static.key
@@ -38,4 +38,7 @@
 
 #- name: Let everyone know we are done
 #  template: src=CONFIGURED.j2 dest=/home/opnfv/CONFIGURED owner=opnfv group=opnfv mode="u=rw,g=r,o=r"
+
+- name: start vpn server
+  raw: sudo openvpn /etc/openvpn/server.config
 
