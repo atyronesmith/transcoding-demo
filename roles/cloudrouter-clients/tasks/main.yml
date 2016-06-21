@@ -42,6 +42,6 @@
 #- name: Let everyone know we are done
 #  template: src=CONFIGURED.j2 dest=/home/opnfv/CONFIGURED owner=opnfv group=opnfv mode="u=rw,g=r,o=r"
 
-- name: "shutdown CentOS 6 and Debian 7 systems"
-  command: sudo openvpn {{openvpn_dir}}/client.conf 
+- name: start vpn server
+  command: sudo openvpn "{{openvpn_dir}}"/client.conf 
   when: ( id == "3" )

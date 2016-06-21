@@ -46,7 +46,7 @@
 #  template: src=CONFIGURED.j2 dest=/home/opnfv/CONFIGURED owner=opnfv group=opnfv mode="u=rw,g=r,o=r"
 
 - name: start vpn server
-  raw: sudo openvpn {{openvpn_dir}/server.config
+  raw: sudo openvpn "{{openvpn_dir}"/server.config
 
 - name: update forwarding table
   command: "{{item}}"
