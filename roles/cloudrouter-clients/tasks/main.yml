@@ -29,13 +29,13 @@
 - name: Copy test openvpn conf
   copy: src=client.conf dest={{openvpn_dir}}/client.conf
   become: yes
-  becom_user: root
+  become_user: root
 
 - name: Test copy key file
   copy: src=static.key dest={{openvpn_dir}}/static.key
 
   become: yes
-  becom_user: root
+  become_user: root
 - name: Let everyone know we are done
   file: path=/home/opnfv/CONFIGURED state=touch owner=opnfv group=opnfv mode=0775
 
