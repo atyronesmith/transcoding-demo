@@ -2,7 +2,7 @@
 #
 - name: add facts from OpenStack discovery
   set_fact:
-    ansible_ssh_host: "{{ hostvars[inventory_hostname].ec2_eip }}"
+    ansible_ssh_host: "{{ vendor }}"
 
 #- name: Display all variables/facts known for a host
 #  debug: var=hostvars[inventory_hostname] verbosity=4
