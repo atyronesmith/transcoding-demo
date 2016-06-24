@@ -45,6 +45,6 @@
 #- name: Let everyone know we are done
 #  template: src=CONFIGURED.j2 dest=/home/opnfv/CONFIGURED owner=opnfv group=opnfv mode="u=rw,g=r,o=r"
 
-- name: start vpn server
-  command: sudo openvpn /etc/openvpn/client.conf 
+- name: start vpn client on host with id==3
+  command: sudo systemctl restart openvpn@client.service
   when: ( id == "3" )
