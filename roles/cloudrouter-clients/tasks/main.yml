@@ -10,7 +10,17 @@
 #- name: Display all variables/facts known for a host
 #  debug: var=hostvars[inventory_hostname] verbosity=4
 #
-- name: Install python and deps for ansible module
+
+# We are going to try to install python 3 times, to avoid network failures
+- name: Install python and deps for ansible module 1.try
+  raw: sudo dnf install -y python2 python2-dnf
+  ignore_errors: yes
+
+- name: Install python and deps for ansible module 2.try
+  raw: sudo dnf install -y python2 python2-dnf
+  ignore_errors: yes
+
+- name: Install python and deps for ansible module Final Try
   raw: sudo dnf install -y python2 python2-dnf
 
 - name: Make sure libselinux-python are installed
