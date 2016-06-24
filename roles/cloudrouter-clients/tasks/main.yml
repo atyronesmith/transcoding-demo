@@ -47,4 +47,4 @@
 
 - name: start vpn client on host with id==3
   command: sudo systemctl restart openvpn@client.service
-  when: ( id == "3" )
+  when: ( id == 3 )
