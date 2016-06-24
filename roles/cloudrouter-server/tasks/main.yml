@@ -17,8 +17,13 @@
 #  dnf: name=libselinux-python state=present
 #  become: yes
 #  become_user: root
+
+- name: fetch AWS public IP first
+  set_fact:
+    ansible_ssh_host: "{{ hostvars[inventory_hostname].ec2_ip_address }}"
+  
 - name: Wait for port 22 to become open
-  local_action: wait_for port=22 search_regex=OpenSSH delay=10 timeout=1200
+  local_action: wait_for port=22 host="{{ ansible_ssh_host | default(inventory_hostname) }} search_regex=OpenSSH delay=10 timeout=1200
 
 - name: Gather facts
   setup:  
