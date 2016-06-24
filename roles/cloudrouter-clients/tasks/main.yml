@@ -29,8 +29,8 @@
   become: yes
   become_user: root
 
-- name: Copy test openvpn conf
-  copy: src=client.conf dest=/etc/openvpn/client.conf
+- name: Copy test openvpn conf while filling a correct remote server
+  template: src=client.conf.j2 dest=/etc/openvpn/client.conf
   become: yes
   become_user: root
 
