@@ -1,0 +1,13 @@
+protocol kernel {
+        persist;
+        scan time 20;
+        export all;
+}
+protocol device {
+        scan time 10;
+}
+protocol static {
+        route {{vlims_subnet_cidr}} via {{bird3_interface_addr}}
+        route {{tunnel_cidr}} via {{bird3_interface_addr}}
+}
+

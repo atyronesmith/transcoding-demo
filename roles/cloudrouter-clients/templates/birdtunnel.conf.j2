@@ -1,0 +1,14 @@
+protocol kernel {
+        persist;
+        scan time 20;
+        export all;
+}
+protocol device {
+        scan time 10;
+}
+protocol static {
+        route {{bird3_cidr_for_bird1}} via {{bird3_interface_for_bird1}}
+        route {{bird3_cidr_for_bird2}} via {{bird3_interface_for_bird2}}
+        route {{tunnel_cidr}} via {{tunnel_interface}}
+}
+
