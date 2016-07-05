@@ -39,22 +39,47 @@
   become: yes
   become_user: root
 
-- name: Copy test openvpn conf while filling a correct remote server
+- name: Copy test openvpn conf while filling in correct remote server
   template: src=client.conf.j2 dest=/etc/openvpn/client.conf
   become: yes
   become_user: root
 
 - name: Test copy key file
   copy: src=static.key dest=/etc/openvpn/static.key
-
   become: yes
   become_user: root
+
+- name: Copy bird conf for non tunneling nodes while filling in correct network params
+  template: src=bird.conf.j2 dest=/etc/bird.conf
+  become: yes
+  become_user: root
+  when ((id == 2) || (id == 3))
+
+- name: Copy bird conf tunneling node while filling in correct network params
+  template: src=birdtunnel.conf.j2 dest=/etc/bird.conf
+  become: yes
+  become_user: root
+  when ((id == 1))
+
+
 - name: Let everyone know we are done
   file: path=/home/opnfv/CONFIGURED state=touch owner=opnfv group=opnfv mode=0775
 
 #- name: Let everyone know we are done
 #  template: src=CONFIGURED.j2 dest=/home/opnfv/CONFIGURED owner=opnfv group=opnfv mode="u=rw,g=r,o=r"
 
+- name: restart bird service
+  command: sudo systemctl restart bird
+
 - name: start vpn client on host with id==3
   command: sudo systemctl restart openvpn@client.service
   when: ( id == 3 )
+
+- name: update forwarding table
+  command: "{{item}}"
+  with_items:
+     - sudo iptables -t nat -I POSTROUTING -o {{tunnel_interface}} -s {{bird3_cidr_for_bird1}} -j MASQUERADE
+     - sudo iptables -t nat -I POSTROUTING -o {{tunnel_interface}} -s {{bird3_cidr_for_bird2}} -j MASQUERADE
+     - sudo iptables -t nat -I POSTROUTING -o {{tunnel_interface}} -s {{tunnel_cidr}} -j MASQUERADE
+  when: ( id == 3 )
+

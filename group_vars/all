@@ -1,5 +1,15 @@
 # variables listed here are applicable to all host groups
 
 remote_vpn_ip: 52.204.91.152
+tunnel_cidr: 10.8.0.0/24
+tunnel_interface: tun0
+vlims_subnet_cidr: 10.0.1.0/24
+vlims_subnet: 10.0.1.0 255.255.255.0
+bird3_addr_for_bird1: 10.3.0.3
+bird3_cidr_for_bird1: 10.3.0.0/24
+bird3_interface_for_bird1: eth1
+bird3_addr_for_bird2: 10.5.0.3
+bird3_cidr_for_bird2: 10.5.0.0/24
+bird3_interface_for_bird2: eth2
 openvpn_dir: /etc/openvpn
 

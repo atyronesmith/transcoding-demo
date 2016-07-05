@@ -1,6 +1,10 @@
-remote {{vpn_server_ip}}
+user nobody
+group nobody
+daemon
 dev tun
+remote {{vpn_server_ip}}
 proto tcp-client
 ifconfig 10.8.0.2 10.8.0.1
-secret static.key
+route {{vlims_subnet}}
+secret /etc/openvpn/static.key
 
