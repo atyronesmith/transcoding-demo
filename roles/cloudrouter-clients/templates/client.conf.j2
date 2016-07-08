@@ -2,7 +2,7 @@ user nobody
 group nobody
 daemon
 dev tun
-remote {{ cluster['amazon']['CloudExternal']['floating_ips'][0] }}
+remote {{ cluster['4']['CloudExternal']['floating_ips'][0] }}
 proto tcp-client
 ifconfig {{ tunnel_addr_server }} {{ tunnel_addr_client }}
 route {{ cluster['amazon']['vlims']['cidrs'][0] }}
