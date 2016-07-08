@@ -53,13 +53,13 @@
   template: src=bird.conf.j2 dest=/etc/bird.conf
   become: yes
   become_user: root
-  when ((id == 2) || (id == 3))
+  when: ((id == 2) || (id == 3))
 
 - name: Copy bird conf tunneling node while filling in correct network params
   template: src=birdtunnel.conf.j2 dest=/etc/bird.conf
   become: yes
   become_user: root
-  when ((id == 1))
+  when: ((id == 1))
 
 
 - name: Let everyone know we are done
