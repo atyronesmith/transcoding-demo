@@ -8,6 +8,6 @@ protocol device {
 }
 protocol static {
         route {{ cluster['amazon']['vlims']['cidrs'][0] }} via {{ cluster[id|string]['VL3']['fixed_ips'][0] }};
-        route {{tunnel_cidr}} via {{ cluster[id|string]['VL3']['fixed_ips'][0] }};
+        route {{ tunnel_cidr }} via {{ cluster[id|string]['VL3']['fixed_ips'][0] }};
 }
 
