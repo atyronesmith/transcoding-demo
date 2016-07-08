@@ -2,9 +2,9 @@ user nobody
 group nobody
 daemon
 dev tun
-remote {{vpn_server_ip}}
+remote {{ cluster['amazon']['CloudExternal']['floating_ips'][0] }}
 proto tcp-client
-ifconfig 10.8.0.2 10.8.0.1
-route {{vlims_subnet}}
+ifconfig {{ tunnel_addr_server }} {{ tunnel_addr_client }}
+route {{ cluster['amazon']['vlims']['cidrs'][0] }}
 secret /etc/openvpn/static.key
 

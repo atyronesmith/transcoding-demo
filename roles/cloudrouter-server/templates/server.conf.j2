@@ -3,5 +3,5 @@ group nobody
 daemon
 dev tun
 proto tcp-server
-ifconfig 10.8.0.1 10.8.0.2
+ifconfig {{ tunnel_addr_client }} {{ tunnel_addr_server }}
 secret /etc/openvpn/static.key
