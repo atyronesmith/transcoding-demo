@@ -8,6 +8,6 @@ protocol device {
 }
 protocol static {
         route {{vlims_subnet_cidr}} via {{ cluster[id|string]['VL3']['fixed_ips'][0] }}
-        route {{tunnel_cidr}} via {{bird3_interface_addr}}
+        route {{tunnel_cidr}} via {{ cluster[id|string]['VL3']['fixed_ips'][0] }}
 }
 
