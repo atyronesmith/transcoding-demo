@@ -3,6 +3,8 @@
 remote_vpn_ip: 52.204.91.152
 tunnel_cidr: 10.8.0.0/24
 tunnel_interface: tun0
+tunnel_addr_client: 10.8.0.1
+tunnel_addr_server: 10.8.0.2
 vlims_subnet_cidr: 10.0.1.0/24
 vlims_subnet: 10.0.1.0 255.255.255.0
 bird3_addr_for_bird1: 10.3.0.3
