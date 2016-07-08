@@ -78,8 +78,8 @@
 - name: update forwarding table
   command: "{{item}}"
   with_items:
-     - sudo iptables -t nat -I POSTROUTING -o {{tunnel_interface}} -s {{bird3_cidr_for_bird1}} -j MASQUERADE
-     - sudo iptables -t nat -I POSTROUTING -o {{tunnel_interface}} -s {{bird3_cidr_for_bird2}} -j MASQUERADE
-     - sudo iptables -t nat -I POSTROUTING -o {{tunnel_interface}} -s {{tunnel_cidr}} -j MASQUERADE
+     - sudo iptables -t nat -I POSTROUTING -o {{tunnel_interface}} -s {{ cluster[vim_id]['VL1']['cidrs'][0] }} -j MASQUERADE
+     - sudo iptables -t nat -I POSTROUTING -o {{tunnel_interface}} -s {{ cluster[vim_id]['VL3']['cidrs'][0] }} -j MASQUERADE
+     - sudo iptables -t nat -I POSTROUTING -o {{tunnel_interface}} -s {{ tunnel_cidr }} -j MASQUERADE
   when: ( id == 3 )
 
