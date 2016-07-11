@@ -8,12 +8,12 @@ protocol device {
 }
 protocol static {
         {%- if id == 1  -%}
-            route {{ cluster['amazon']['vlims']['cidrs'][0] }} via {{ cluster[id|string]['VL2']['fixed_ips'][0] }};
-            route {{ tunnel_cidr }} via {{ cluster[id|string]['VL2']['fixed_ips'][0] }};
+            route {{ cluster['amazon']['vlims']['cidrs'][0] }} via {{ cluster['3']['VL1']['fixed_ips'][0] }};
+            route {{ tunnel_cidr }} via {{ cluster['3']['VL1']['fixed_ips'][0] }};
         {% endif %}
         {%- if id == 2  -%}
-            route {{ cluster['amazon']['vlims']['cidrs'][0] }} via {{ cluster[id|string]['VL3']['fixed_ips'][0] }};
-            route {{ tunnel_cidr }} via {{ cluster[id|string]['VL3']['fixed_ips'][0] }};
+            route {{ cluster['amazon']['vlims']['cidrs'][0] }} via {{ cluster['3']['VL3']['fixed_ips'][0] }};
+            route {{ tunnel_cidr }} via {{ cluster['3']['VL3']['fixed_ips'][0] }};
         {% endif %}
 }
 
