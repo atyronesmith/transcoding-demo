@@ -7,8 +7,8 @@ protocol device {
         scan time 10;
 }
 protocol static {
-        route {{ cluster[vim_id]['VL1']['cidrs'][0] }} via {{ cluster[id|string]['VL1']['fixed_ips'][0] }};
-        route {{ cluster[vim_id]['VL3']['cidrs'][0] }} via {{ cluster[id|string]['VL3']['fixed_ips'][0] }};
+        route {{ cluster[vim_id]['VL1']['cidrs'][0] }} via "eth1";
+        route {{ cluster[vim_id]['VL3']['cidrs'][0] }} via "eth2";
         route {{ tunnel_cidr }} via {{ tunnel_addr_client }};
 }
 
