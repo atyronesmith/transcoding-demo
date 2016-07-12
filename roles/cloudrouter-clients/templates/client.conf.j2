@@ -5,6 +5,5 @@ dev tun
 remote {{ cluster['4']['CloudExternal']['floating_ips'][0] }}
 proto tcp-client
 ifconfig {{ tunnel_addr_server }} {{ tunnel_addr_client }}
-route 10.0.1.0 255.255.255.0
+route {{ cluster[cluster['amazon']['vlims']['cidrs'][0]]['address'] }} {{ cluster[cluster['amazon']['vlims']['cidrs'][0]]['mask'] }}
 secret /etc/openvpn/static.key
-
