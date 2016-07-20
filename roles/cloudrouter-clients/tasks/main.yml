@@ -23,6 +23,13 @@
 - name: Install python and deps for ansible module Final Try
   raw: sudo dnf install -y python2 python2-dnf
 
+- name: Install openvpn
+  raw: sudo dnf install -y openvpn
+  when ((id == 3))
+
+- name: Install bird
+  raw: sudo dnf install -y bird
+
 - name: Make sure libselinux-python are installed
   dnf: name=libselinux-python state=present
   become: yes
