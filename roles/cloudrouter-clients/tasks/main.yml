@@ -25,7 +25,7 @@
 
 - name: Install openvpn
   raw: sudo dnf install -y openvpn
-  when ((id == 3))
+  when: ((id == 3))
 
 - name: Install bird
   raw: sudo dnf install -y bird
