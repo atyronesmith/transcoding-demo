@@ -11,24 +11,30 @@
 #  debug: var=hostvars[inventory_hostname] verbosity=4
 #
 
-# We are going to try to install python 3 times, to avoid network failures
 - name: Install python and deps for ansible module 1.try
   raw: sudo dnf install -y python2 python2-dnf
+  register: task_result
+  until: task_result.rc == 0
+  retries: 3
+  delay: 1
   ignore_errors: yes
-
-- name: Install python and deps for ansible module 2.try
-  raw: sudo dnf install -y python2 python2-dnf
-  ignore_errors: yes
-
-- name: Install python and deps for ansible module Final Try
-  raw: sudo dnf install -y python2 python2-dnf
 
 - name: Install openvpn
   raw: sudo dnf install -y openvpn
   when: ((id == 3))
+  register: task_result
+  until: task_result.rc == 0
+  retries: 3
+  delay: 1
+  ignore_errors: yes
 
 - name: Install bird
   raw: sudo dnf install -y bird
+  register: task_result
+  until: task_result.rc == 0
+  retries: 3
+  delay: 1
+  ignore_errors: yes
 
 - name: Make sure libselinux-python are installed
   dnf: name=libselinux-python state=present
