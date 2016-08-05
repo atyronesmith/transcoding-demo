@@ -1,6 +1,6 @@
 - hosts: all
   gather_facts: no
-  remote_user: nfv
+  remote_user: opnfv
    
   roles:
     - cloudrouter-server
