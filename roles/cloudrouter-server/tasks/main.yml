@@ -70,10 +70,10 @@
 - name: update forwarding table
   command: "{{item}}"
   with_items:
-     - "sudo iptables -I FORWARD -i tun0 -o eth0 -s {{ tunnel_cidr }} -d {{ subnets['amazon']['vlims']['cidrs'][0] }} -m conntrack --ctstate NEW -j ACCEPT"
-     - "sudo iptables -I FORWARD -i tun0 -o eth1 -s {{ tunnel_cidr }} -m conntrack --ctstate NEW -j ACCEPT"
-     - "sudo iptables -I FORWARD -i eth0 -o eth1 -s {{ subnets['amazon']['vlims']['cidrs'][0] }} -m conntrack --ctstate NEW -j ACCEPT"
-     - "sudo iptables -I FORWARD -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT"
-     - "sudo iptables -t nat -I POSTROUTING -o eth1 -s {{ tunnel_cidr }} -j MASQUERADE"
-     - "sudo iptables -t nat -I POSTROUTING -o eth1 -s {{ subnets['amazon']['vlims']['cidrs'][0] }} -j MASQUERADE"
+     - sudo iptables -I FORWARD -i tun0 -o eth0 -s {{ tunnel_cidr }} -d {{ subnets['amazon']['vlims']['cidrs'][0] }} -m conntrack --ctstate NEW -j ACCEPT
+     - sudo iptables -I FORWARD -i tun0 -o eth1 -s {{ tunnel_cidr }} -m conntrack --ctstate NEW -j ACCEPT
+     - sudo iptables -I FORWARD -i eth0 -o eth1 -s {{ subnets['amazon']['vlims']['cidrs'][0] }} -m conntrack --ctstate NEW -j ACCEPT
+     - sudo iptables -I FORWARD -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT
+     - sudo iptables -t nat -I POSTROUTING -o eth1 -s {{ tunnel_cidr }} -j MASQUERADE
+     - sudo iptables -t nat -I POSTROUTING -o eth1 -s {{ subnets['amazon']['vlims']['cidrs'][0] }} -j MASQUERADE
 
