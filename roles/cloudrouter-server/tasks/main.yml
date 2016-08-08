@@ -37,8 +37,12 @@
 #- name: Install bird
 #  raw: sudo dnf install -y bird
 
+- name: Get current user
+  command: whoami
+  register: opnfv_user
+
 - name: DEBUG before become
-  debug: msg="Testing"
+  debug: msg="Testing sudo as {{ opnfv_user }}"
 
 - name: Ensures {{openvpn_dir}} dir exists
   file: path={{openvpn_dir}} state=directory
