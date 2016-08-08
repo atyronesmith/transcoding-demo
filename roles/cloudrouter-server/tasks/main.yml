@@ -37,6 +37,9 @@
 #- name: Install bird
 #  raw: sudo dnf install -y bird
 
+- name: DEBUG before become
+  debug: msg="Testing"
+
 - name: Ensures {{openvpn_dir}} dir exists
   file: path={{openvpn_dir}} state=directory
   become: true
