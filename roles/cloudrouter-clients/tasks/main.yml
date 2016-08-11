@@ -1,5 +1,9 @@
 # Need to use the net_mgmt network for acces from the Ansible server
 #
+- name: add facts from OpenStack discovery
+  set_fact:
+    ansible_ssh_host: "{{ hostvars[inventory_hostname].openstack.addresses.net_mgmt[0].addr }}"
+
 - name: Wait for port 22 to become open
   local_action: wait_for port=22 host="{{ ansible_ssh_host | default(inventory_hostname) }}" search_regex=OpenSSH delay=10 timeout=1200
 
