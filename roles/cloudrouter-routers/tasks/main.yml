@@ -47,7 +47,7 @@
   when: ((id == 1) or (id == 2) or (id == 3))
 
 - name: Let everyone know we are done
-  file: path=/home/nfv/CONFIGURED state=touch owner=nfv group=nfv mode=0775
+  file: path=/home/nfv/CONFIGURED state=touch owner=nfv mode=0775
   when: nf.stat.isdir is defined and nf.stat.isdir
 
 - name: restart bird service
