@@ -44,12 +44,12 @@
   setup:  
 
 - stat: path=/home/opnfv
-  regsiter: op
+  register: op
 
 - stat: path=/home/nfv
   register: nf
 
-- name: Put a README in place
+- name: Conditionally put a README in /home/opnfv
   copy: src=README dest=/home/opnfv/README
   when: op.stat.isdir is defined and op.stat.isdir
 
