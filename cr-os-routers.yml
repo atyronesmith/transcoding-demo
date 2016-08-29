@@ -1,6 +1,7 @@
-- name: Configure OPNFV demo CloudRouter OS Routers
-  hosts: cloudrouter-os-routers
+- hosts: ~.*Cloud.*Router.*
+  gather_facts: no
+  remote_user: nfv
 
   roles:
-    - cloudrouter-os-routers
+    - cloudrouter-routers
 
