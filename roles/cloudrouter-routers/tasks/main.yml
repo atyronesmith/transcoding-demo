@@ -51,5 +51,7 @@
   when: nf.stat.isdir is defined and nf.stat.isdir
 
 - name: restart bird service
-  command: sudo systemctl restart bird
+  command: systemctl restart bird
+  become: yes
+  become_user: root
 
