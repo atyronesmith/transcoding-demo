@@ -43,8 +43,19 @@
 - name: Gather facts
   setup:  
 
+- stat: path=/home/opnfv
+  regsiter: op
+
+- stat: path=/home/nfv
+  register: nf
+
 - name: Put a README in place
   copy: src=README dest=/home/opnfv/README
+  when: op.stat.isdir is defined and op.stat.isdir
+
+- name: Put a README in place
+  copy: src=README dest=/home/nfv/README
+  when: nf.stat.isdir is defined and nf.stat.isdir
 
 - name: Ensures {{openvpn_dir}} dir exists
   file: path={{openvpn_dir}} state=directory
@@ -76,6 +87,11 @@
 
 - name: Let everyone know we are done
   file: path=/home/opnfv/CONFIGURED state=touch owner=opnfv group=opnfv mode=0775
+  when: op.stat.isdir is defined and op.stat.isdir
+
+- name: Let everyone know we are done
+  file: path=/home/nfv/CONFIGURED state=touch owner=nfv group=nfv mode=0775
+  when: nf.stat.isdir is defined and nf.stat.isdir
 
 #- name: Let everyone know we are done
 #  template: src=CONFIGURED.j2 dest=/home/opnfv/CONFIGURED owner=opnfv group=opnfv mode="u=rw,g=r,o=r"
