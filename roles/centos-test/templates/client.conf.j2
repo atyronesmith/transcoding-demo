@@ -1,0 +1,9 @@
+user nobody
+group nobody
+daemon
+dev tun
+remote {{ cluster['4']['CloudExternal']['floating_ips'][0] }}
+proto tcp-client
+ifconfig {{ tunnel_addr_server }} {{ tunnel_addr_client }}
+route {{ subnets['amazon']['vlims']['addresses'][0] }} {{ subnets['amazon']['vlims']['masks'][0] }}
+secret /etc/openvpn/static.key

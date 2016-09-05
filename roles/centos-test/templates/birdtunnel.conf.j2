@@ -1,0 +1,14 @@
+protocol kernel {
+        persist;
+        scan time 20;
+        export all;
+}
+protocol device {
+        scan time 10;
+}
+protocol static {
+        route {{ subnets[vim_id]['VL1']['cidrs'][0] }} via "{{ cluster[id|string]['VL1']['interface'] }}";
+        route {{ subnets[vim_id]['VL3']['cidrs'][0] }} via "{{ cluster[id|string]['VL3']['interface'] }}";
+        route {{ tunnel_cidr }} via "{{ tunnel_interface }}";
+}
+

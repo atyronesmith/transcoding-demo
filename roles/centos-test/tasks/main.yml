@@ -1,0 +1,35 @@
+# Need to use the net_mgmt network for acces from the Ansible server
+#
+- name: add facts from OpenStack discovery
+  set_fact:
+    ansible_ssh_host: "{{ hostvars[inventory_hostname].openstack.addresses.net_mgmt[0].addr }}"
+
+- name: Display all variables/facts known for a host
+  debug: var=hostvars[inventory_hostname] verbosity=4
+
+- name: Wait for port 22 to become open
+  local_action: wait_for port=22 host="{{ ansible_ssh_host | default(inventory_hostname) }}" search_regex=OpenSSH delay=10 timeout=1200
+
+- name: Install python and deps for ansible module 1.try
+  raw: sudo dnf install -y python2 python2-dnf
+  register: task_result
+  until: task_result.rc == 0
+  retries: 3
+  delay: 1
+  ignore_errors: yes
+
+- name: Make sure libselinux-python are installed
+  dnf: name=libselinux-python state=present
+  become: yes
+  become_user: root
+
+- name: Gather facts
+  setup:  
+
+- name: Conditionally put a README in /home/opnfv
+  copy: src=README dest=/root/README
+
+- name: Let everyone know we are done
+  file: path=/root/CONFIGURED state=touch owner=opnfv group=opnfv mode=0775
+
+
