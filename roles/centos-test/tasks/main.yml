@@ -14,6 +14,11 @@
 - name: Wait for port 22 to become open
   local_action: wait_for port=22 host="{{ ansible_ssh_host | default(inventory_hostname) }}" search_regex=OpenSSH delay=10 timeout=1200
 
+- name: install dnf
+  yum: name=dnf state=present
+  become: true
+  become_user: root
+
 - name: Install python and deps for ansible module 1.try
   raw: sudo dnf install -y python2 python2-dnf
   register: task_result
