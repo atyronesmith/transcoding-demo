@@ -14,6 +14,7 @@
 - name: Wait for port 22 to become open
   local_action: wait_for port=22 host="{{ ansible_ssh_host | default(inventory_hostname) }}" search_regex=OpenSSH delay=10 timeout=1200
   become: true
+  become_user: root
 
 - name: Install python and deps for ansible module 1.try
   raw: sudo dnf install -y python2 python2-dnf
@@ -32,9 +33,11 @@
 - name: Conditionally put a README in /home/opnfv
   copy: src=README dest=/root/README
   become: true
+  become_user: root
 
 - name: Let everyone know we are done
   file: path=/root/CONFIGURED state=touch owner=opnfv group=opnfv mode=0775
   become: true
+  become_user: root
 
 
