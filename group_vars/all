@@ -6,5 +6,3 @@ tunnel_addr_client: 10.8.0.1
 tunnel_addr_server: 10.8.0.2
 
 openvpn_dir: /etc/openvpn
-
-ansible_shh_private_key_file: /home/vagrant/transcode_vnf_key.pem
