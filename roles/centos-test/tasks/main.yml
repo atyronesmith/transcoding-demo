@@ -13,6 +13,7 @@
 
 - name: Wait for port 22 to become open
   local_action: wait_for port=22 host="{{ ansible_ssh_host | default(inventory_hostname) }}" search_regex=OpenSSH delay=10 timeout=1200
+  become: true
 
 - name: Install python and deps for ansible module 1.try
   raw: sudo dnf install -y python2 python2-dnf
@@ -21,19 +22,19 @@
   retries: 3
   delay: 1
   ignore_errors: yes
+  become: true
 
 - name: Make sure libselinux-python are installed
   dnf: name=libselinux-python state=present
   become: yes
   become_user: root
 
-- name: Gather facts
-  setup:  
-
 - name: Conditionally put a README in /home/opnfv
   copy: src=README dest=/root/README
+  become: true
 
 - name: Let everyone know we are done
   file: path=/root/CONFIGURED state=touch owner=opnfv group=opnfv mode=0775
+  become: true
 
 
