@@ -1,7 +1,8 @@
 - hosts: all 
   gather_facts: no
   remote_user: root
-
+  ansible_shh_private_key_file: /home/vagrant/transcode_vnf_key.pem
+  
   roles:
     - centos-test
 
