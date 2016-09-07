@@ -1,6 +1,7 @@
 - hosts: all 
   gather_facts: no
   remote_user: centos
+  ansible_user: root
   become: true
   
   roles:
