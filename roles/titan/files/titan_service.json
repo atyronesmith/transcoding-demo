@@ -4,28 +4,245 @@
       "Device": {
          "Template": {
             "FormatConfiguration": {
-               "SmoothStreamingMuxer": {
-                  "AudioFragmentDuration": 8,
-                  "DRM": {
-                     "DRMType": "None",
-                     "PlayReady": {
-                        "KeyContent": "",
-                        "KeyID": "",
-                        "KeySeed": "",
-                        "KeyType": "Seed",
-                        "LicenseUrl": "",
-                        "ServiceID": ""
+               "TSMuxer": {
+                  "Conformance": "DVB",
+                  "ConformanceDependent": {
+                     "ATSC": {
+                        "ChannelMajorNumber": 0,
+                        "ChannelMinorNumber": 0,
+                        "ChannelName": "",
+                        "Delivery": "Cable",
+                        "EIT": {
+                           "EITMaxBitrate": 150000,
+                           "FollowInputForEIT": false
+                        },
+                        "MGTPeriod": 0,
+                        "Modulation": "Analog",
+                        "STTPeriod": 0,
+                        "VCTPeriod": 0
+                     },
+                     "DVB": {
+                        "EIT": {
+                           "EITMaxBitrate": 150000,
+                           "FollowInputForEIT": false
+                        },
+                        "NITPeriod": 0,
+                        "NetworkID": 0,
+                        "NetworkName": "",
+                        "SDTPeriod": 0,
+                        "ServiceName": "",
+                        "ServiceProvider": "",
+                        "TDTPeriod": 0
                      }
                   },
-                  "VideoFragmentDuration": 8
+                  "MPEGTSParameters": {
+                     "AlignAudioOnPES": false,
+                     "InsertDVBAUPackets": false,
+                     "InsertPCRonPES": true,
+                     "PATPeriod": 125,
+                     "PMTPID": 480,
+                     "PMTPeriod": 125,
+                     "ProgramNumber": 1,
+                     "RemoveConformanceTables": false,
+                     "RemoveEmtpyAdaptationFields": true,
+                     "RemovePadding": false,
+                     "TransportID": 0,
+                     "UseUnconstrainedPES": false
+                  },
+                  "Profiles": [
+                     {
+                        "HLSLayout": {
+                           "MediaFilesExtension": "",
+                           "MediaFilesName": "",
+                           "SubDirectoryPath": ""
+                        },
+                        "TSBitrate": {
+                           "Enable": false,
+                           "TSBitrateValue": 0
+                        },
+                        "TracksMapping": {
+                           "AudioTrackList": [
+                              {
+                                 "TrackIdx": 0,
+                                 "VariantIdx": 0
+                              }
+                           ],
+                           "DataTrackList": [
+                              {
+                                 "TrackIdx": 0,
+                                 "VariantIdx": 0
+                              }
+                           ],
+                           "VideoTrackList": [
+                              {
+                                 "TrackIdx": 0,
+                                 "VariantIdx": 0
+                              }
+                           ]
+                        }
+                     }
+                  ],
+                  "Statmux": false,
+                  "VBRReservation": false
                }
             },
-            "Name": "smooth",
+            "Name": "ts device test",
             "Static": false,
             "Tracks": {
                "AudioTracks": [
+                  {
+                     "AudioDescription": false,
+                     "Encoding": {
+                        "AACParameters": {
+                           "Format": "Auto",
+                           "Layout": "Stereo",
+                           "MidSizeStereo": true,
+                           "Profile": "Low Complexity",
+                           "TemporalNoiseShaping": true
+                        },
+                        "Codec": "Dolby",
+                        "DolbyParameters": {
+                           "Advanced": {
+                              "AudioProductionInformation": {
+                                 "ADConverter": "Standard",
+                                 "PeakMixingLevel": 105,
+                                 "RoomType": "Small Room, Flat Monitor"
+                              },
+                              "Bitstream": {
+                                 "SubstreamID": 0,
+                                 "Type": "Independent"
+                              },
+                              "DynamicRangeCompression": {
+                                 "LineMode": "None",
+                                 "RFMode": "None"
+                              },
+                              "InputFiltering": {
+                                 "BandwidthLowPassFilter": false,
+                                 "DCHighPassFilter": false,
+                                 "DigitalDeEmphasis": "Disable",
+                                 "LFELowPassFilter": false
+                              },
+                              "MixLevels": {
+                                 "CenterLORO": "-3.0 dB",
+                                 "CenterRTLT": "-3.0 dB",
+                                 "SurroundLORO": "-3.0 dB",
+                                 "SurroundLTRT": "-3.0 dB"
+                              },
+                              "MixingMetadata": {
+                                 "DolbyHeadPhoneMode": "Auto",
+                                 "DolbySurroundEXMode": "Disable",
+                                 "DolbySurroundMode": "Auto",
+                                 "StereoDownMix": "Unspecified"
+                              },
+                              "SurroundChannelProcessing": {
+                                 "Attenuation": false,
+                                 "PhaseShift": false
+                              }
+                           },
+                           "AudioCodingMode": "2/0 - L R",
+                           "BitStreamMode": "Complete Main",
+                           "CopyrightBit": true,
+                           "DdeMetaData": false,
+                           "DialogNormalization": 27,
+                           "LfeChannel": false,
+                           "Original": true,
+                           "Profile": "Dolby Digital"
+                        },
+                        "MPEGL2Parameters": {
+                           "CopyrightFlag": true,
+                           "Layout": "Stereo",
+                           "OriginalFlag": true
+                        }
+                     },
+                     "Gain": 0,
+                     "Language": "eng",
+                     "Pid": 0,
+                     "Variants": [
+                        {
+                           "AACParameters": {
+                              "BitRate": 128000,
+                              "SampleRate": "48 kHz"
+                           },
+                           "DolbyParameters": {
+                              "BitRate": "192 kbit/s",
+                              "SampleRate": "48 kHz"
+                           },
+                           "MPEGL2Parameters": {
+                              "BitRate": "192 kbit/s",
+                              "SampleRate": "48 kHz"
+                           }
+                        }
+                     ]
+                  }
                ],
                "DataTracks": [
+                  {
+                     "Encoding": {
+                        "BurnedSubtitles": {
+                           "OverridePosition": false,
+                           "Position": 0
+                        },
+                        "CCSubPassThrough": {
+                           "InputCompatibility": {
+                              "IgnoreATSC": false,
+                              "IgnoreDivicom": false,
+                              "IgnoreNADBSLine21": false,
+                              "IgnoreSCTE20": false
+                           },
+                           "OutputFormat": {
+                              "ATSC": true,
+                              "Divicom": false,
+                              "NADBSLine21": false
+                           }
+                        },
+                        "Codec": "DVB Sub Pass-through",
+                        "DvbSubPassThrough": {
+                           "RateControl": {
+                              "MaximumBitrate": 0
+                           }
+                        },
+                        "TeletextPassThrough": {
+                           "FieldsFiltering": "7-22,320-335",
+                           "FullPassThrough": true,
+                           "RateControl": {
+                              "MaximumBitrate": 0
+                           },
+                           "TeletextDescriptors": [
+                              {
+                                 "Enable": false,
+                                 "Language": "",
+                                 "Page": 100,
+                                 "TeletextPageType": "Initial Teletext page"
+                              },
+                              {
+                                 "Enable": false,
+                                 "Language": "",
+                                 "Page": 100,
+                                 "TeletextPageType": "Initial Teletext page"
+                              },
+                              {
+                                 "Enable": false,
+                                 "Language": "",
+                                 "Page": 100,
+                                 "TeletextPageType": "Initial Teletext page"
+                              },
+                              {
+                                 "Enable": false,
+                                 "Language": "",
+                                 "Page": 100,
+                                 "TeletextPageType": "Initial Teletext page"
+                              }
+                           ]
+                        }
+                     },
+                     "Language": "",
+                     "Pid": 0,
+                     "Variants": [
+                        {
+                           "Prop": ""
+                        }
+                     ]
+                  }
                ],
                "VideoTracks": [
                   {
@@ -51,19 +268,18 @@
                      "Encoding": {
                         "AdvancedParameters": {
                            "Afd": false,
-                           "EnableOpenGop": false,
+                           "EnableOpenGop": true,
                            "Encoding": "Frame",
                            "Entropy": "CABAC",
-                           "ForceIdr": true,
+                           "ForceIdr": false,
                            "Hrd": true,
                            "IntraDcPrecision": 8,
                            "MultiReferences": true,
-                           "UseSinglePpsSps": true,
                            "WaveFrontParallelProcessing": false,
                            "WeightedPrediction": true
                         },
                         "BFrameConfiguration": {
-                           "EnableHierarchical": false,
+                           "EnableHierarchical": true,
                            "Max": 7,
                            "Min": 0
                         },
@@ -156,9 +372,9 @@
                            "Encoding": {
                               "AVCParameters": {
                                  "Level": "Auto",
-                                 "Profile": "Main"
+                                 "Profile": "High"
                               },
-                              "Bitrate": 400000,
+                              "Bitrate": 100000,
                               "GopParameters": {
                                  "Fixed": false,
                                  "GopSize": 50
@@ -174,518 +390,13 @@
                            },
                            "FrameRateParameters": {
                               "Denominator": 1,
-                              "FrameRate": "25",
+                              "FrameRate": "29.97",
                               "Numerator": 25
                            },
                            "FrameSizeParameters": {
-                              "Height": 260,
+                              "Height": 240,
                               "Resolution": "Custom",
-                              "Width": 464
-                           },
-                           "LogoInsertions": [
-                              {
-                                 "AspectRatio": {
-                                    "AspectRatio": "Use original",
-                                    "Denominator": 9,
-                                    "Numerator": 16
-                                 },
-                                 "Enable": false,
-                                 "FileName": "name",
-                                 "Left": 0,
-                                 "LogoSizeReference": "Width",
-                                 "Size": 100,
-                                 "Speed": "1",
-                                 "Top": 0,
-                                 "Urls": [
-                                    ""
-                                 ]
-                              },
-                              {
-                                 "AspectRatio": {
-                                    "AspectRatio": "Use original",
-                                    "Denominator": 9,
-                                    "Numerator": 16
-                                 },
-                                 "Enable": false,
-                                 "FileName": "name",
-                                 "Left": 0,
-                                 "LogoSizeReference": "Width",
-                                 "Size": 100,
-                                 "Speed": "1",
-                                 "Top": 0,
-                                 "Urls": [
-                                    ""
-                                 ]
-                              },
-                              {
-                                 "AspectRatio": {
-                                    "AspectRatio": "Use original",
-                                    "Denominator": 9,
-                                    "Numerator": 16
-                                 },
-                                 "Enable": false,
-                                 "FileName": "name",
-                                 "Left": 0,
-                                 "LogoSizeReference": "Width",
-                                 "Size": 100,
-                                 "Speed": "1",
-                                 "Top": 0,
-                                 "Urls": [
-                                    ""
-                                 ]
-                              },
-                              {
-                                 "AspectRatio": {
-                                    "AspectRatio": "Use original",
-                                    "Denominator": 9,
-                                    "Numerator": 16
-                                 },
-                                 "Enable": false,
-                                 "FileName": "name",
-                                 "Left": 0,
-                                 "LogoSizeReference": "Width",
-                                 "Size": 100,
-                                 "Speed": "1",
-                                 "Top": 0,
-                                 "Urls": [
-                                    ""
-                                 ]
-                              }
-                           ]
-                        },
-                        {
-                           "Encoding": {
-                              "AVCParameters": {
-                                 "Level": "Auto",
-                                 "Profile": "Main"
-                              },
-                              "Bitrate": 800000,
-                              "GopParameters": {
-                                 "Fixed": false,
-                                 "GopSize": 50
-                              },
-                              "HEVCParameters": {
-                                 "Level": "Auto",
-                                 "Profile": "Main"
-                              },
-                              "MPEG2Parameters": {
-                                 "Level": "Auto",
-                                 "Profile": "Main"
-                              }
-                           },
-                           "FrameRateParameters": {
-                              "Denominator": 1,
-                              "FrameRate": "25",
-                              "Numerator": 25
-                           },
-                           "FrameSizeParameters": {
-                              "Height": 260,
-                              "Resolution": "Custom",
-                              "Width": 464
-                           },
-                           "LogoInsertions": [
-                              {
-                                 "AspectRatio": {
-                                    "AspectRatio": "Use original",
-                                    "Denominator": 9,
-                                    "Numerator": 16
-                                 },
-                                 "Enable": false,
-                                 "FileName": "name",
-                                 "Left": 0,
-                                 "LogoSizeReference": "Width",
-                                 "Size": 100,
-                                 "Speed": "1",
-                                 "Top": 0,
-                                 "Urls": [
-                                    ""
-                                 ]
-                              },
-                              {
-                                 "AspectRatio": {
-                                    "AspectRatio": "Use original",
-                                    "Denominator": 9,
-                                    "Numerator": 16
-                                 },
-                                 "Enable": false,
-                                 "FileName": "name",
-                                 "Left": 0,
-                                 "LogoSizeReference": "Width",
-                                 "Size": 100,
-                                 "Speed": "1",
-                                 "Top": 0,
-                                 "Urls": [
-                                    ""
-                                 ]
-                              },
-                              {
-                                 "AspectRatio": {
-                                    "AspectRatio": "Use original",
-                                    "Denominator": 9,
-                                    "Numerator": 16
-                                 },
-                                 "Enable": false,
-                                 "FileName": "name",
-                                 "Left": 0,
-                                 "LogoSizeReference": "Width",
-                                 "Size": 100,
-                                 "Speed": "1",
-                                 "Top": 0,
-                                 "Urls": [
-                                    ""
-                                 ]
-                              },
-                              {
-                                 "AspectRatio": {
-                                    "AspectRatio": "Use original",
-                                    "Denominator": 9,
-                                    "Numerator": 16
-                                 },
-                                 "Enable": false,
-                                 "FileName": "name",
-                                 "Left": 0,
-                                 "LogoSizeReference": "Width",
-                                 "Size": 100,
-                                 "Speed": "1",
-                                 "Top": 0,
-                                 "Urls": [
-                                    ""
-                                 ]
-                              }
-                           ]
-                        },
-                        {
-                           "Encoding": {
-                              "AVCParameters": {
-                                 "Level": "Auto",
-                                 "Profile": "Main"
-                              },
-                              "Bitrate": 960000,
-                              "GopParameters": {
-                                 "Fixed": false,
-                                 "GopSize": 50
-                              },
-                              "HEVCParameters": {
-                                 "Level": "Auto",
-                                 "Profile": "Main"
-                              },
-                              "MPEG2Parameters": {
-                                 "Level": "Auto",
-                                 "Profile": "Main"
-                              }
-                           },
-                           "FrameRateParameters": {
-                              "Denominator": 1,
-                              "FrameRate": "25",
-                              "Numerator": 25
-                           },
-                           "FrameSizeParameters": {
-                              "Height": 360,
-                              "Resolution": "Custom",
-                              "Width": 640
-                           },
-                           "LogoInsertions": [
-                              {
-                                 "AspectRatio": {
-                                    "AspectRatio": "Use original",
-                                    "Denominator": 9,
-                                    "Numerator": 16
-                                 },
-                                 "Enable": false,
-                                 "FileName": "name",
-                                 "Left": 0,
-                                 "LogoSizeReference": "Width",
-                                 "Size": 100,
-                                 "Speed": "1",
-                                 "Top": 0,
-                                 "Urls": [
-                                    ""
-                                 ]
-                              },
-                              {
-                                 "AspectRatio": {
-                                    "AspectRatio": "Use original",
-                                    "Denominator": 9,
-                                    "Numerator": 16
-                                 },
-                                 "Enable": false,
-                                 "FileName": "name",
-                                 "Left": 0,
-                                 "LogoSizeReference": "Width",
-                                 "Size": 100,
-                                 "Speed": "1",
-                                 "Top": 0,
-                                 "Urls": [
-                                    ""
-                                 ]
-                              },
-                              {
-                                 "AspectRatio": {
-                                    "AspectRatio": "Use original",
-                                    "Denominator": 9,
-                                    "Numerator": 16
-                                 },
-                                 "Enable": false,
-                                 "FileName": "name",
-                                 "Left": 0,
-                                 "LogoSizeReference": "Width",
-                                 "Size": 100,
-                                 "Speed": "1",
-                                 "Top": 0,
-                                 "Urls": [
-                                    ""
-                                 ]
-                              },
-                              {
-                                 "AspectRatio": {
-                                    "AspectRatio": "Use original",
-                                    "Denominator": 9,
-                                    "Numerator": 16
-                                 },
-                                 "Enable": false,
-                                 "FileName": "name",
-                                 "Left": 0,
-                                 "LogoSizeReference": "Width",
-                                 "Size": 100,
-                                 "Speed": "1",
-                                 "Top": 0,
-                                 "Urls": [
-                                    ""
-                                 ]
-                              }
-                           ]
-                        },
-                        {
-                           "Encoding": {
-                              "AVCParameters": {
-                                 "Level": "Auto",
-                                 "Profile": "Main"
-                              },
-                              "Bitrate": 1200000,
-                              "GopParameters": {
-                                 "Fixed": false,
-                                 "GopSize": 50
-                              },
-                              "HEVCParameters": {
-                                 "Level": "Auto",
-                                 "Profile": "Main"
-                              },
-                              "MPEG2Parameters": {
-                                 "Level": "Auto",
-                                 "Profile": "Main"
-                              }
-                           },
-                           "FrameRateParameters": {
-                              "Denominator": 1,
-                              "FrameRate": "25",
-                              "Numerator": 25
-                           },
-                           "FrameSizeParameters": {
-                              "Height": 360,
-                              "Resolution": "Custom",
-                              "Width": 640
-                           },
-                           "LogoInsertions": [
-                              {
-                                 "AspectRatio": {
-                                    "AspectRatio": "Use original",
-                                    "Denominator": 9,
-                                    "Numerator": 16
-                                 },
-                                 "Enable": false,
-                                 "FileName": "name",
-                                 "Left": 0,
-                                 "LogoSizeReference": "Width",
-                                 "Size": 100,
-                                 "Speed": "1",
-                                 "Top": 0,
-                                 "Urls": [
-                                    ""
-                                 ]
-                              },
-                              {
-                                 "AspectRatio": {
-                                    "AspectRatio": "Use original",
-                                    "Denominator": 9,
-                                    "Numerator": 16
-                                 },
-                                 "Enable": false,
-                                 "FileName": "name",
-                                 "Left": 0,
-                                 "LogoSizeReference": "Width",
-                                 "Size": 100,
-                                 "Speed": "1",
-                                 "Top": 0,
-                                 "Urls": [
-                                    ""
-                                 ]
-                              },
-                              {
-                                 "AspectRatio": {
-                                    "AspectRatio": "Use original",
-                                    "Denominator": 9,
-                                    "Numerator": 16
-                                 },
-                                 "Enable": false,
-                                 "FileName": "name",
-                                 "Left": 0,
-                                 "LogoSizeReference": "Width",
-                                 "Size": 100,
-                                 "Speed": "1",
-                                 "Top": 0,
-                                 "Urls": [
-                                    ""
-                                 ]
-                              },
-                              {
-                                 "AspectRatio": {
-                                    "AspectRatio": "Use original",
-                                    "Denominator": 9,
-                                    "Numerator": 16
-                                 },
-                                 "Enable": false,
-                                 "FileName": "name",
-                                 "Left": 0,
-                                 "LogoSizeReference": "Width",
-                                 "Size": 100,
-                                 "Speed": "1",
-                                 "Top": 0,
-                                 "Urls": [
-                                    ""
-                                 ]
-                              }
-                           ]
-                        },
-                        {
-                           "Encoding": {
-                              "AVCParameters": {
-                                 "Level": "Auto",
-                                 "Profile": "Main"
-                              },
-                              "Bitrate": 1800000,
-                              "GopParameters": {
-                                 "Fixed": false,
-                                 "GopSize": 50
-                              },
-                              "HEVCParameters": {
-                                 "Level": "Auto",
-                                 "Profile": "Main"
-                              },
-                              "MPEG2Parameters": {
-                                 "Level": "Auto",
-                                 "Profile": "Main"
-                              }
-                           },
-                           "FrameRateParameters": {
-                              "Denominator": 1,
-                              "FrameRate": "25",
-                              "Numerator": 25
-                           },
-                           "FrameSizeParameters": {
-                              "Height": 576,
-                              "Resolution": "Custom",
-                              "Width": 1024
-                           },
-                           "LogoInsertions": [
-                              {
-                                 "AspectRatio": {
-                                    "AspectRatio": "Use original",
-                                    "Denominator": 9,
-                                    "Numerator": 16
-                                 },
-                                 "Enable": false,
-                                 "FileName": "name",
-                                 "Left": 0,
-                                 "LogoSizeReference": "Width",
-                                 "Size": 100,
-                                 "Speed": "1",
-                                 "Top": 0,
-                                 "Urls": [
-                                    ""
-                                 ]
-                              },
-                              {
-                                 "AspectRatio": {
-                                    "AspectRatio": "Use original",
-                                    "Denominator": 9,
-                                    "Numerator": 16
-                                 },
-                                 "Enable": false,
-                                 "FileName": "name",
-                                 "Left": 0,
-                                 "LogoSizeReference": "Width",
-                                 "Size": 100,
-                                 "Speed": "1",
-                                 "Top": 0,
-                                 "Urls": [
-                                    ""
-                                 ]
-                              },
-                              {
-                                 "AspectRatio": {
-                                    "AspectRatio": "Use original",
-                                    "Denominator": 9,
-                                    "Numerator": 16
-                                 },
-                                 "Enable": false,
-                                 "FileName": "name",
-                                 "Left": 0,
-                                 "LogoSizeReference": "Width",
-                                 "Size": 100,
-                                 "Speed": "1",
-                                 "Top": 0,
-                                 "Urls": [
-                                    ""
-                                 ]
-                              },
-                              {
-                                 "AspectRatio": {
-                                    "AspectRatio": "Use original",
-                                    "Denominator": 9,
-                                    "Numerator": 16
-                                 },
-                                 "Enable": false,
-                                 "FileName": "name",
-                                 "Left": 0,
-                                 "LogoSizeReference": "Width",
-                                 "Size": 100,
-                                 "Speed": "1",
-                                 "Top": 0,
-                                 "Urls": [
-                                    ""
-                                 ]
-                              }
-                           ]
-                        },
-                        {
-                           "Encoding": {
-                              "AVCParameters": {
-                                 "Level": "Auto",
-                                 "Profile": "Main"
-                              },
-                              "Bitrate": 2300000,
-                              "GopParameters": {
-                                 "Fixed": false,
-                                 "GopSize": 50
-                              },
-                              "HEVCParameters": {
-                                 "Level": "Auto",
-                                 "Profile": "Main"
-                              },
-                              "MPEG2Parameters": {
-                                 "Level": "Auto",
-                                 "Profile": "Main"
-                              }
-                           },
-                           "FrameRateParameters": {
-                              "Denominator": 1,
-                              "FrameRate": "25",
-                              "Numerator": 25
-                           },
-                           "FrameSizeParameters": {
-                              "Height": 576,
-                              "Resolution": "Custom",
-                              "Width": 1024
+                              "Width": 320
                            },
                            "LogoInsertions": [
                               {
@@ -764,15 +475,15 @@
                   }
                ]
             },
-            "Type": "Smooth Streaming",
-            "UID": "df906988-2b24-44c3-ac44-63c718055019"
+            "Type": "TS",
+            "UID": "36a417c2-f10a-41f0-8b27-48e42a410fc5"
          }
       },
       "Input": {
          "IPInputList": [
             {
                "Interface": "eth2",
-               "Source": "10.10.0.2",
+               "Source": "0.0.0.0",
                "Url": "udp://239.255.0.26:1234",
                "UseFec": false,
                "UseSourceFiltering": false
@@ -783,11 +494,17 @@
       "IntelVCA": {
          "Node": "Host"
       },
-      "Load": 46072,
+      "Load": 9050,
       "Mapping": {
          "AudioInputTrack": [
+            {
+               "ID": 258
+            }
          ],
          "DataInputTrack": [
+            {
+               "ID": 0
+            }
          ],
          "VideoInputTrack": [
             {
@@ -796,11 +513,11 @@
          ]
       },
       "MultiplePackagerGroup": "",
-      "Name": "1",
+      "Name": "Multicat Stream",
       "Outputs": [
          [
             {
-               "BackupInterface": "eth0",
+               "BackupInterface": "",
                "ChunkDuration": 10,
                "DRM": {
                   "InternalKeyGeneration": {
@@ -814,32 +531,35 @@
                   "OverrideSourceAddress": false,
                   "SourceAddress": "0.0.0.0"
                },
-               "Interface": "eth0",
+               "Interface": "eth2",
                "Mp4": false,
                "PlaybackUrl": "",
                "StreamName": "",
                "TOS": 0,
                "TTL": 255,
                "Type": "Live",
-               "Url": "http://172.16.0.222:8082/file.isml"
+               "Url": "udp://239.255.0.26:1234"
             }
          ]
       ],
       "State": {
          "Messages": [
             {
-               "Description": "No output stream.",
-               "Name": "Service Output Stream"
-            },
-            {
-               "Description": "Timeout on input socket udp://239.255.0.26:1234",
-               "Name": "Input Source Loss"
+               "Description": "Audio signal has been silent for 2.005 seconds.",
+               "Name": "Audio Signal Silent"
             }
          ],
          "State": "Encoding",
          "Statistics": {
+            "Input": {
+               "IP": {
+                  "InputProtocol": "UDP",
+                  "TsPacketPerIpPacket": 7,
+                  "TsPacketSize": 188
+               }
+            }
          },
-         "Streaming": false
+         "Streaming": true
       },
       "Statmux": {
          "Channel": 0,
@@ -847,7 +567,7 @@
       },
       "TemplateParametersOverride": {
       },
-      "ThumbnailUrl": "thumbnails/",
-      "UID": "b154d26b-f7c2-461b-8758-fb6daa32dfc9"
+      "ThumbnailUrl": "thumbnails/e2febe91-f69c-47a2-88dd-50dbaefd4c1e-944.png",
+      "UID": "e2febe91-f69c-47a2-88dd-50dbaefd4c1e"
    }
 ]
