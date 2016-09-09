@@ -1,7 +1,8 @@
 - hosts: all 
   gather_facts: no
-  remote_user: centos
+#  remote_user: centos
   
   roles:
-    - centos-test
+    - { role: multicat, when: "multicat" in ansible_roles }
+    - { role: titan, when: "titan" in ansible_roles }
 
