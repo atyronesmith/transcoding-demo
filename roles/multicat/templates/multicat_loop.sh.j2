@@ -1,0 +1,29 @@
+#!/bin/bash
+
+echo '--------------------------------------------------'
+echo '|  multicat-loop 1.0.0'
+echo '|  Wrapper shell script for loop playback purpose.'
+echo '|  2012, No.9'
+echo '--------------------------------------------------'
+
+OPTIONS="-p 8192 -uU /stream/Live-NAB3.ts 239.255.0.26:1234@{{ hostvars[inventory_hostname].openstack.addresses.VL1[0].addr }}:1234"
+
+function sigint_handler {
+    echo "Interrupted by Ctrl + C"
+    exit
+}
+
+trap sigint_handler SIGINT
+
+i=0
+for (( ; ; ))
+do
+    i=`expr $i + 1`
+
+    echo "#$i multicat $OPTIONS"
+    multicat $OPTIONS
+    RETVAL=$?
+
+    [ $RETVAL -ne 0 ] && exit $?
+done
+

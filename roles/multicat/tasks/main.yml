@@ -1,0 +1,18 @@
+- name: add facts from OpenStack discovery
+  set_fact:
+    ansible_ssh_host: "{{ hostvars[inventory_hostname].openstack.addresses.net_mgmt[0].addr }}"
+
+- name: Display all variables/facts known for a host
+  debug: var=hostvars[inventory_hostname] verbosity=4
+
+- name: Wait for port 22 to become open
+  local_action: wait_for port=22 host="{{ ansible_ssh_host | default(inventory_hostname) }}" search_regex=OpenSSH delay=10 timeout=1200
+
+- name: Copy multicat loop scrit
+  template: src=multicat_loop.sh.j2 dest=/home/centos/multicat_loop.sh
+
+- name: Make loop script executable
+  file: path=/home/centos/multicat_loop.sh state=file mode=0777
+
+- name: Run multicat loop script
+  raw: /home/centos/multicat_loop.sh &
