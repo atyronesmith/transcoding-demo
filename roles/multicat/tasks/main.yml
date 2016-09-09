@@ -9,6 +9,14 @@
 - name: Wait for port 22 to become open
   local_action: wait_for port=22 host="{{ ansible_ssh_host | default(inventory_hostname) }}" search_regex=OpenSSH delay=10 timeout=1200
 
+- name: something
+  set_fact: '{{ item.key.split("_")[-1] }}'="{{ item.value[0].addr }}"
+  with-dict: hostvars[inventory_hostname].openstack.addresses
+
+- name: Set multicat_out_addr
+  command: echo {{ ansible_facts.VL1 }}
+  register: multicat_out_addr
+
 - name: Copy multicat loop scrit
   template: src=multicat_loop.sh.j2 dest=/home/centos/multicat_loop.sh
 

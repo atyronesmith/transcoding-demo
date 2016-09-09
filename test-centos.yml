@@ -3,6 +3,6 @@
 #  remote_user: centos
   
   roles:
-    - { role: multicat, when: "multicat" in ansible_roles }
-    - { role: titan, when: "titan" in ansible_roles }
+    - { role: multicat, when: (ansible_role == "multicat") }
+    - { role: titan, when: (ansible_role == "titan") }
 
