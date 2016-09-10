@@ -25,6 +25,6 @@
   file: path=/home/centos/multicat_loop.sh state=file mode=0777
 
 - name: Run multicat loop script
-  command: /home/centos/multicat_loop.sh 
+  command: nohup /home/centos/multicat_loop.sh &
   async: 45
   poll: 0
