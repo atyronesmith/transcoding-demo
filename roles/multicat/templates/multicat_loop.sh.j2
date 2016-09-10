@@ -6,7 +6,7 @@ echo '|  Wrapper shell script for loop playback purpose.'
 echo '|  2012, No.9'
 echo '--------------------------------------------------'
 
-OPTIONS="-p 8192 -uU /stream/Live-NAB3.ts 239.255.0.26:1234@{{ multicat_out_addr }}:1234"
+OPTIONS="-p 8192 -uU /stream/Live-NAB3.ts 239.255.0.26:1234@{{ hostvars[inventory_hostname].cluster["2"].VL1.fixed_ips[0] }}:1234"
 
 function sigint_handler {
     echo "Interrupted by Ctrl + C"
@@ -27,3 +27,4 @@ do
     [ $RETVAL -ne 0 ] && exit $?
 done
 
+disown
