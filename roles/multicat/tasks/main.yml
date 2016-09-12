@@ -24,7 +24,19 @@
 - name: Make loop script executable
   file: path=/home/centos/multicat_loop.sh state=file mode=0777
 
-- name: Run multicat loop script
-  command: nohup /home/centos/multicat_loop.sh &
-  async: 45
-  poll: 0
+#- name: Run multicat loop script
+#  command: nohup /home/centos/multicat_loop.sh &
+#  async: 45
+#  poll: 0
+
+- name: create multicat loop service
+  template: src=multicat_stream.service.j2 dest=/usr/lib/systemd/system/multicat-stream.service
+  become: true
+
+- name: reload daemons
+  command: systemctl daemon-reload
+  become: true
+
+- name: start multicat stream service
+  service: state=started enabled=yes name=multicat-stream
+  become: true
