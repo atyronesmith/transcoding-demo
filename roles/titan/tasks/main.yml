@@ -10,4 +10,4 @@
   local_action: wait_for port=22 host="{{ ansible_ssh_host | default(inventory_hostname) }}" search_regex=OpenSSH delay=10 timeout=1200
 
 - name: Add service to titan
-  uri: method=POST force_basic_auth=yes url=http://localhost/api/v1/servicesmngt/services user=Administrator password=titan body="{{ lookup('files', 'titan_service.json') }}" body_format=json
+  uri: method=POST force_basic_auth=yes url=http://localhost/api/v1/servicesmngt/services user=Administrator password=titan body="{{ lookup('file', 'titan_service.json') }}" body_format=json status_code=200,204
